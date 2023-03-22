@@ -11,7 +11,7 @@ def initialize_layer_weights(in_dim: int, out_dim: int) -> nparray:
 
     return sigma * np.random.randn(in_dim, out_dim) 
 
-def initialize_model_weights(dimensions: list) -> list:
+def initialize_weights(dimensions: list) -> list:
 
     layers = []
     for dims in dimensions:
@@ -21,11 +21,13 @@ def initialize_model_weights(dimensions: list) -> list:
     return layers
 
 
-def forward(x: nparray, layers: list) -> nparray:
+def forward(x: nparray, layers: list,\
+        dropout_rate: float=0.25) -> nparray:
 
     for layer in layers[:-1]:
         
-        x = relu(x @ layer)
+        x = relu(x @ layer) 
+        #x = x * (np.random.rand(*x.shape) > dropout_rate)
 
     x = x @ layers[-1]
 
@@ -67,7 +69,7 @@ if __name__ == "__main__":
 
     dims = [[64,32], [32,32], [32,10]]
 
-    layers = initialize_model_weights(dims)
+    layers = initialize_weights(dims)
 
     for step in range(1000):
         

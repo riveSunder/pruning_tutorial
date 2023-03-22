@@ -8,7 +8,7 @@ import src
 from src.mlp import sgd_update,\
         compute_loss,\
         grad_loss,\
-        initialize_model_weights
+        initialize_weights
 
 relu = lambda x: x * (x > 0.0)
 fn_type = type(relu)
@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
     dims = [[64,32], [32,32], [32,32], [32,10]]
 
-    layers = initialize_model_weights(dims)
+    layers = initialize_weights(dims)
 
     for step in range(1000):
         
