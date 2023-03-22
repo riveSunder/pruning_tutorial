@@ -1,9 +1,10 @@
 from autograd import numpy as np
 from autograd import grad
 
-relu = lambda x: x * (x > 0.0)
-fn_type = type(relu)
-nparray = type(np.random.rand(1,2))
+from src.common import relu,
+    fn_type,\
+    nparray,\
+    mse_loss_fn
 
 def initialize_layer_weights(in_dim: int, out_dim: int) -> nparray:
 
@@ -64,7 +65,7 @@ if __name__ == "__main__":
 
     x = np.random.rand(128,64)
     targets = np.random.rand(128,10)
-    loss_fn = lambda y, p: np.mean((y-p)**2)
+    loss_fn = mse_loss_fn 
     lr = 1e-3
 
     dims = [[64,32], [32,32], [32,10]]

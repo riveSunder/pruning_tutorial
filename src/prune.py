@@ -10,9 +10,9 @@ from src.mlp import sgd_update,\
         grad_loss,\
         initialize_weights
 
-relu = lambda x: x * (x > 0.0)
-fn_type = type(relu)
-nparray = type(np.random.rand(1,2))
+from src.common import relu,\
+        fn_type,\
+        nparray
 
 def forward_skeletonize(x: nparray, nodes: list, layers: list):
     # special forward pass with nodes for dE/da

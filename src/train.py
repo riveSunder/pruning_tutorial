@@ -22,14 +22,10 @@ from src.prune import forward_skeletonize,\
        prune_weights_by_grad2,\
        prune_weights_by_magnitude
 
-nparray = type(np.random.rand(1,2))
-
-sm = lambda x: np.exp(x)/(np.sum(np.exp(x), \
-        axis=-1, keepdims=True))
-mse_loss_fn = lambda y, p: np.mean((y-p)**2)
-nll_loss_fn = lambda y, pred: -np.mean(\
-        y*np.log(sm(pred)) + (1-y)*np.log(1. - sm(pred)))
-
+from src.common import nparray,\
+        sm,\
+        mse_loss_fn,\
+        nll_loss_fn
 
 def indices_to_one_hot(y: nparray, max_index=None) -> nparray: 
 
