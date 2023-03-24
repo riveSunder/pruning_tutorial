@@ -1,7 +1,7 @@
 from autograd import numpy as np
 from autograd import grad
 
-from src.common import relu,
+from src.common import relu,\
     fn_type,\
     nparray,\
     mse_loss_fn
@@ -21,6 +21,18 @@ def initialize_weights(dimensions: list) -> list:
 
     return layers
 
+def initialize_model(my_seed: int, in_dim: int,\
+        h_dim: int, out_dim: int, number_hidden: int) -> list:
+
+    dims = [[in_dim, h_dim]]
+    for layer_index in range(number_hidden):
+        dims.append([h_dim, h_dim])
+
+    dims.append([h_dim, out_dim])
+
+    np.random.seed(my_seed)
+
+    return initialize_weights(dims)
 
 def forward(x: nparray, layers: list,\
         dropout_rate: float=0.25) -> nparray:
@@ -76,7 +88,7 @@ if __name__ == "__main__":
         
         grad_layers = grad_loss(x, targets, loss_fn, layers)
 
-        if step % 100 == 0:
+        if step % 100 == 0 or step == 999:
             loss = compute_loss(x, targets, loss_fn, layers) 
             print(f"loss at step {step} = {loss:.3f}")
 
