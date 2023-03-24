@@ -211,7 +211,7 @@ def train(my_seed: int=13,\
     else:
         os.mkdir(save_dir)
 
-    print(f"model stats with mode {mode} pruning")
+    print(f"model shape with mode {mode} pruning")
 
     for ii, layer in enumerate(layers):
         print(layer.shape, np.sum(np.abs(layer) > 0))
