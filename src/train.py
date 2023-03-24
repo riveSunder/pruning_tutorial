@@ -150,7 +150,7 @@ def train(my_seed: int=13,\
     my_prune_fn = retrieve_prune_fn(mode)
     batch_size = 1024
     number_prunes = 8
-    h_dim = 16
+    h_dim = 32
     number_hidden = 3
     display_every = number_epochs // 10
 
