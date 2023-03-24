@@ -77,7 +77,7 @@ def prune_node(layers: list,\
 
 def prune_weights_by_grad2(layers: list,\
         grad2_layers: list,\
-        prune_per_layer: int=20,\
+        prune_per_layer: int=64,\
         initial_threshold: float=1e-5) -> list:
 
     new_layers = []
@@ -102,7 +102,7 @@ def prune_weights_by_grad2(layers: list,\
     return new_layers
 
 def prune_weights_by_magnitude(layers: list,\
-        prune_per_layer: int=20,\
+        prune_per_layer: int=64,\
         initial_threshold: float=1e-3) -> list:
 
     return prune_weights_by_grad2(layers,\
