@@ -149,9 +149,9 @@ def train(my_seed: int=13,\
 
     my_prune_fn = retrieve_prune_fn(mode)
     batch_size = 1024
-    number_prunes = 14
+    number_prunes = 8
     h_dim = 16
-    number_hidden = 2
+    number_hidden = 3
     display_every = number_epochs // 10
 
     train_x, train_y, val_x, val_y = split_digits(my_seed)
@@ -257,4 +257,4 @@ def train(my_seed: int=13,\
 if __name__ == "__main__":
 
     for mode in range(4):
-       train(number_epochs=10000,mode=mode, lr=1e-1) 
+       train(number_epochs=10000,mode=mode, lr=6e-2) 
